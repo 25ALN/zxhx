@@ -396,9 +396,11 @@
 //          if(x=='a'){
 //             printf("Enter first number: ");
 //             double n1,n2;
-//             scanf("%lf",&n1);
+//             while(scanf("%lf",&n1)!=1)
+//             printf("%s is not a number",(char)n1);
 //             printf("Enter second number: ");
-//             scanf("%lf",&n2);
+//             while(scanf("%lf",&n2)!=1)
+//             printf("%s is not a number",(char)n1);
 //             printf("%f\n",n1+n2);
 //          }else if(x=='s'){
 //             printf("Enter first number: ");
@@ -436,3 +438,151 @@
 //     }
 //     return 0;
 // }    
+
+//                   第九章
+// 3
+// void chline(char ch,int i,int j){
+//     for(int z=0;z<i;z++){
+//         for(int h=0;h<j;h++){
+//             printf("%c",ch);
+//         }
+//         printf("\n");
+//     }
+
+// }
+// int main(){
+//     int i=0,j=0,cnt=0;
+//     char ch;
+//     printf("please enter your favorite char");
+//     ch=getchar();
+//     printf("你想要几行第几列");
+//     scanf("%d %d",&i,&j);
+//     chline(ch,i,j);
+//     return 0;
+// }
+
+// 5
+// void max(double *x,double *y){
+//     double max;
+//     if(x-y<=0){
+//       max=*y;
+//     }else{
+//         max=*x;
+//     }
+//     *y=max,*x=max;
+// }
+// int main(){
+//     double a,b;
+//     scanf("%lf %lf",&a,&b);
+//     max(&a,&b);
+//     printf("%f %f",a,b);
+//     return 0;
+// }
+
+// 11
+// int main(){
+//     int n,cnt=0,t=0,y=1;
+//     printf("how much number do you want:");
+//     scanf("%d",&n);
+//     for(int i=1;cnt<n;cnt++){
+//        printf("%d ",i);
+//         t = i + y, i = y, y = t;
+//     }
+//     return 0;
+// }
+
+//                   第十章
+// 5
+// void compare(double *s,int cnt){
+//     double max=0,min=0;
+//       for(int i=0;i<cnt-1;i++){
+//         if(s[i+1]>s[i]){
+//             max=s[i+1];
+//         }
+//         if(s[i+1]<s[i]){
+//             min=s[i+1];
+//         }
+//       }
+//       printf("差值为%f",max-min);
+// }
+// int main(){
+//     int cnt=0;
+//     double aln[100];
+//     printf("enter q to quit\n");
+//     for(int i=0; ;i++){
+//        if(scanf("%lf",&aln[i])==1){
+//          cnt++;
+//        }else break;
+//     }
+//     compare(aln,cnt);
+//     return 0;
+// }
+
+// 11
+// #define x 3
+// #define y 5
+// void print(int (*aln1)[y]){
+//     for(int i=0;i<3;i++){
+//         for(int j=0;j<5;j++){
+//            printf("%d ",aln1[i][j]);
+//         }
+//         printf("\n");
+//     }
+// }
+// void change(int (*aln2)[y]){
+//     for(int i=0;i<3;i++){
+//         for(int j=0;j<5;j++){
+//            aln2[i][j]*=2;
+//            printf("%d ",aln2[i][j]);
+//         }
+//         printf("\n");
+//     }
+// }
+// int main(){
+//     int aln[x][y];
+//     for(int i=0;i<x;i++){
+//         for(int j=0;j<y;j++){
+//            scanf("%d",&aln[i][j]);
+//         }
+//     }
+//     print(aln);
+//     change(aln);
+//     return 0;
+// }
+
+// 13
+void average(double (*aln)[5]){
+    int cnt=1;
+    double sum=0,asum=0;
+    for(int i=0;i<3;i++){
+        for(int j=0;j<5;j++){
+           sum+=aln[i][j];
+           asum+=aln[i][j];
+        }
+        printf("%d group average is %.2f\n",cnt,sum/5);
+        sum=0,cnt++;
+    }
+    printf("all numbers'average is %.2f\n",asum/15);
+}
+void max(double (*aln)[5]){
+    double max=0;
+    for(int i=0;i<3;i++){
+        for(int j=0;j<4;j++){
+           if(aln[i][j+1]<aln[i][j]){
+            max=aln[i][j];
+           }
+        }
+    }
+    printf("the max number is %.2f",max);
+}
+int main(){
+    printf("please three group number,every group has 5 number:");
+    double aln[3][5];
+    for(int i=0;i<3;i++){
+        for(int j=0;j<5;j++){
+           scanf("%lf",&aln[i][j]);
+        }
+    }
+ 
+    return 0;
+}
