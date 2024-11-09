@@ -661,23 +661,46 @@
 // }
 
 // 13
-void change(char *x){
-    int len=strlen(x),cnt=0;
-    char *aln[len];
-    for(int i=0;i<len;i++){
-        if(x[i]==' '){
-            x[i]='\0';
-            strcpy(aln[cnt],x);
-            cnt++;
+// void change(char *x){
+//     int cnt=0,len=strlen(x);
+//     for(int i=0;i<10;i++){
+//         printf("%s",x[i]);
+//     }
+// }
+// int main(){
+//     char *str;
+//     scanf("%s",&str);
+//     change(str);
+//     return 0;
+// }
+
+// 16
+int main(){
+    char ch,*str;
+    gets(str);
+    int len=strlen(str);
+    printf("what do you want to do for the str:\n");
+    printf("-p      按原样打印\n");
+    printf("-u      转换成大写打印\n");
+    printf("-l      转换成小写打印\n");
+    ch=getchar();
+    if(ch=='p'){
+        
+    }else if(ch=='u'){
+        for(int i=0;i<len;i++){
+            if(str[i]>=97&&str[i]<=122){
+                str[i]-=32;
+            }
+        }
+    }else if(ch=='l'){
+        for(int j=0;j<len;j++){
+            if(str[j]>=65&&str[j]<=90){
+                str[j]+=32;
+            }
         }
     }
-    for(int j=0;j<len;j++){
-        printf("%s ",aln[j]);
-    }
-}
-int main(){
-    char *str;
-    scanf("%s",str);
-    change(str);
+    for(int x=0;x<len;x++){
+            printf("%c",str[x]);
+        }
     return 0;
 }
