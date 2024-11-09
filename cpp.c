@@ -491,7 +491,7 @@
 //     return 0;
 // }
 
-//                   第十章
+//                   第十章 
 // 5
 // void compare(double *s,int cnt){
 //     double max=0,min=0;
@@ -551,38 +551,133 @@
 // }
 
 // 13
-void average(double (*aln)[5]){
-    int cnt=1;
-    double sum=0,asum=0;
-    for(int i=0;i<3;i++){
-        for(int j=0;j<5;j++){
-           sum+=aln[i][j];
-           asum+=aln[i][j];
+// void average(double (*aln)[5]){
+//     int cnt=1;
+//     double sum=0,asum=0;
+//     for(int i=0;i<3;i++){
+//         for(int j=0;j<5;j++){
+//            sum+=aln[i][j];
+//            asum+=aln[i][j];
+//         }
+//         printf("%d group average is %.2f\n",cnt,sum/5);
+//         sum=0,cnt++;
+//     }
+//     printf("all numbers'average is %.2f\n",asum/15);
+// }
+// void max(double (*aln)[5]){
+//     double max=0;
+//     for(int i=0;i<3;i++){
+//         for(int j=0;j<4;j++){
+//            if(aln[i][j+1]<aln[i][j]){
+//             max=aln[i][j];
+//            }
+//         }
+//     }
+//     printf("the max number is %.2f",max);
+// }
+// int main(){
+//     printf("please three group number,every group has 5 number:");
+//     double aln[3][5];
+//     for(int i=0;i<3;i++){
+//         for(int j=0;j<5;j++){
+//            scanf("%lf",&aln[i][j]);
+//         }
+//     }
+ 
+//     return 0;
+// }
+
+//                   第十一章
+// 2
+// void s(char str[1000],int len){
+//     for(int i=0;i<len;i++){
+//         printf("%c ",str[i]);
+//     }
+// }
+// int main(){
+//     int i=0;
+//     char aln[1000];
+//     while(1){
+//         aln[i]=getchar();
+//         if(isspace(aln[i])||aln[i]=='\n'){
+//           aln[i]='\0';
+//           break;
+//         }else{
+//             i++;
+//         }
+//     }
+//     int len=strlen(aln);
+//     s(aln,len);
+//     return 0;
+// } 
+
+// 6
+// int is_within(char ch,char *s){
+//     int isprime=0,len=strlen(s);
+//     for(int i=0;i<len;i++){
+//        if(s[i]==ch){
+//        isprime=1;
+//        break;
+//        }else{
+//         isprime=0;
+//        }
+//     }
+//     return isprime;
+// }
+// int main(){
+//     char ch,*aln;
+//     printf("please choose a char:");
+//     ch=getchar();
+//     printf("please enter a group of str:");
+//     scanf("%s",aln);
+//     if(is_within(ch,aln)) printf("here have your char");
+//     else printf("unfortunately,here don't have your char");
+//     return 0;
+// }
+
+// 8
+// char *string_in(char *x,char *y){
+//     int cnt=0,len1=strlen(x),len2=strlen(y);
+//     for(int i=0;i<len1;i++){
+//         for(int j=0;j<len2;j++){
+//           if(x[i]==y[j]){
+//             cnt++;
+//             break;
+//           }
+//         } 
+//     }
+//     if(cnt=len2) return y;
+//     else{
+//         *y=' ';
+//         return y;
+//     }
+// }
+// int main(){
+//     char *a,*b;
+//     printf("please enter two str:");
+//     scanf("%s",a),scanf("%s",b);
+//     printf("%s",string_in(a,b));
+//     return 0;
+// }
+
+// 13
+void change(char *x){
+    int len=strlen(x),cnt=0;
+    char *aln[len];
+    for(int i=0;i<len;i++){
+        if(x[i]==' '){
+            x[i]='\0';
+            strcpy(aln[cnt],x);
+            cnt++;
         }
-        printf("%d group average is %.2f\n",cnt,sum/5);
-        sum=0,cnt++;
     }
-    printf("all numbers'average is %.2f\n",asum/15);
-}
-void max(double (*aln)[5]){
-    double max=0;
-    for(int i=0;i<3;i++){
-        for(int j=0;j<4;j++){
-           if(aln[i][j+1]<aln[i][j]){
-            max=aln[i][j];
-           }
-        }
+    for(int j=0;j<len;j++){
+        printf("%s ",aln[j]);
     }
-    printf("the max number is %.2f",max);
 }
 int main(){
-    printf("please three group number,every group has 5 number:");
-    double aln[3][5];
-    for(int i=0;i<3;i++){
-        for(int j=0;j<5;j++){
-           scanf("%lf",&aln[i][j]);
-        }
-    }
- 
+    char *str;
+    scanf("%s",str);
+    change(str);
     return 0;
 }
