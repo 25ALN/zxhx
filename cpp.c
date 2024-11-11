@@ -675,32 +675,35 @@
 // }
 
 // 16
-int main(){
-    char ch,*str;
-    gets(str);
-    int len=strlen(str);
-    printf("what do you want to do for the str:\n");
-    printf("-p      按原样打印\n");
-    printf("-u      转换成大写打印\n");
-    printf("-l      转换成小写打印\n");
-    ch=getchar();
-    if(ch=='p'){
+// int main(){
+//     char ch,*str;
+//     gets(str);
+//     int len=strlen(str);
+//     printf("what do you want to do for the str:\n");
+//     printf("-p      按原样打印\n");
+//     printf("-u      转换成大写打印\n");
+//     printf("-l      转换成小写打印\n");
+//     ch=getchar();
+//     if(ch=='p'){
         
-    }else if(ch=='u'){
-        for(int i=0;i<len;i++){
-            if(str[i]>=97&&str[i]<=122){
-                str[i]-=32;
-            }
-        }
-    }else if(ch=='l'){
-        for(int j=0;j<len;j++){
-            if(str[j]>=65&&str[j]<=90){
-                str[j]+=32;
-            }
-        }
-    }
-    for(int x=0;x<len;x++){
-            printf("%c",str[x]);
-        }
-    return 0;
-}
+//     }else if(ch=='u'){
+//         for(int i=0;i<len;i++){
+//             if(str[i]>=97&&str[i]<=122){
+//                 str[i]-=32;
+//             }
+//         }
+//     }else if(ch=='l'){
+//         for(int j=0;j<len;j++){
+//             if(str[j]>=65&&str[j]<=90){
+//                 str[j]+=32;
+//             }
+//         }
+//     }
+//     for(int x=0;x<len;x++){
+//             printf("%c",str[x]);
+//         }
+//     return 0;
+// }
+
+//                   第十二章
+
