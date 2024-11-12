@@ -477,28 +477,28 @@
 //     return 0;
 // }
 
-int jiec(int n){
-    if(n==1){
-        return 1;
-    }else{
-        return n=n*jiec(n-1);
-    }
-}
-int main(){
-    int cnt=0;
-    double n,sum=1;
-    scanf("%lf",&n);
-    for(int i=2; ;i+2){
-     sum+=((1.0*(pow(-1,i/2)*pow(n,i)))/jiec(i)*1.0);
-     cnt++;
-     if((pow(n,i))/jiec(i)<0.00001){
-        break;
-     }
-    }
-    printf("cos(x)=%.6f\n",sum);
-    printf("count=%d",cnt);
-    return 0;
-}
+// int jiec(int n){
+//     if(n==1){
+//         return 1;
+//     }else{
+//         return n=n*jiec(n-1);
+//     }
+// }
+// int main(){
+//     int cnt=0;
+//     double n,sum=1;
+//     scanf("%lf",&n);
+//     for(int i=2; ;i+2){
+//      sum+=((1.0*(pow(-1,i/2)*pow(n,i)))/jiec(i)*1.0);
+//      cnt++;
+//      if((pow(n,i))/jiec(i)<0.00001){
+//         break;
+//      }
+//     }
+//     printf("cos(x)=%.6f\n",sum);
+//     printf("count=%d",cnt);
+//     return 0;
+// }
 
 // int main(){
 //     char s[1000];
@@ -523,6 +523,92 @@ int main(){
 //     return 0;
 // }
 
+// int main(){
+//     char ch=' ';
+//     int aln[1000],i=0;
+//     for(int z=0;z<1000;z++){
+//         aln[z]=0;
+//     }
+//     while(ch!='.'){
+//         scanf("%c",&ch);
+//     if(ch!=' '){
+//         aln[i]++;
+//     }
+//     if(ch==' '){
+//         i++;
+//     }
+//     }
+//     for(int j=0;j<i;j++){
+//         printf("%d",aln[j]);
+//         if(j!=i-1){
+//             printf(" ");
+//         }
+//     }
+
+//     return 0;
+// }
+
+// int main(){
+//     int max,aln[10],t=100,n,i=0;
+//     scanf("%d",&n);
+//     while(n>0){
+//      scanf("%d",&aln[i]);
+//      i++;
+//      n--;
+//     }
+//     max=aln[0];
+//     for(int j=0;j<i;j++){
+//        if(aln[j]>max){
+//         max=aln[j];
+//        }
+//     }
+//     for(int z=0;z<i;z++){
+//         if(aln[z]==max&&t>=z){
+//           t=z;
+//         }
+//     }
+//     printf("%d %d",max,t);
+//     return 0;
+// }
+
+// int main(){
+//     int n,cnt=0;
+//     scanf("%d",&n);
+//     while(n>0){
+//         n/=2;
+//         cnt++;
+//     }
+//     printf("%d",32-cnt);
+//     return 0;
+// }
+
+// struct strbuf {
+//   int len;     
+//   int alloc;   
+//   char *buf;   
+// };
+// void strbuf_insert(struct strbuf *sb, size_t pos, const void *data, size_t len){
+//     strncat(sb->buf,(char*)data,len);
+//     printf("%s",sb->buf);
+// }
+// int main(){
+//     struct strbuf *sn;
+//     char *str;
+//     sn->buf="loveforvevr";
+//     scanf("%s",str);    
+//     int len=strlen(str);
+//     strbuf_insert(sn,4,str,len);
+//     return 0;
+// }
+
 int main(){
-    return 9;
+    char *s;
+    scanf("%s",s);
+    int len=strlen(s);
+    for(int i=2;i<len;i++){
+        *(s+i)=*(s+i+1);
+    }
+    *(s+len)='\0';
+    printf("%s",s);
+    return 0;
 }
