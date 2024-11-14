@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 struct strbuf {
   int len;     
@@ -42,14 +44,16 @@ int strbuf_cmp(const struct strbuf *first, const struct strbuf *second){
 }
 // 清空 sb
 void strbuf_reset(struct strbuf *sb){
-  free(sb);
+  strncpy(sb->buf,"\0",1);
+  sb->len=0;
+  sb->alloc=0;
 }
 
 //part 2 
 
 // 确保在 len 之后 strbuf 中至少有 extra 个字节的空闲空间可用。
 void strbuf_grow(struct strbuf *sb, size_t extra){
-     sb->alloc+=extra;
+  sb->alloc+=extra;
 }
 // 向 sb 追加长度为 len 的数据 data。
 void strbuf_add(struct strbuf *sb, const void *data, size_t len){
@@ -57,15 +61,15 @@ void strbuf_add(struct strbuf *sb, const void *data, size_t len){
 }
 // 向 sb 追加一个字符 c。
 void strbuf_addch(struct strbuf *sb, int c){
-  strcpy(sb->buf,(char)c);
+  strncpy(sb->buf,(char)c,1);
 }
 // 向 sb 追加一个字符串 s。
 void strbuf_addstr(struct strbuf *sb, const char *s){
-  strcpy(sb->buf,s);
+  strncpy(sb->buf,s,strlen(s));
 }
 // 向一个 sb 追加另一个 strbuf 的数据。
 void strbuf_addbuf(struct strbuf *sb, const struct strbuf *sb2){
-  strcpy(sb->buf,sb2->buf);
+  strncpy(sb->buf,sb2->buf,strlen(sb2->buf));
 }
 // 设置 sb 的长度 len。
 void strbuf_setlen(struct strbuf *sb, size_t len){
@@ -78,7 +82,7 @@ size_t strbuf_avail(const struct strbuf *sb){
 }
 // 向 sb 内存坐标为 pos 位置插入长度为 len 的数据 data。
 void strbuf_insert(struct strbuf *sb, size_t pos, const void *data, size_t len){
-      strncpy(sb->buf+pos,data,len);
+   strncpy(sb->buf+pos,data,len);
 }
 
 //pare 2c
@@ -101,11 +105,23 @@ void strbuf_rtrim(struct strbuf *sb){
 }
 // 删除 sb 缓冲区从 pos 坐标开始长度为 len 的内容。
 void strbuf_remove(struct strbuf *sb, size_t pos, size_t len){
-  for(int i=pos;i<=len;i++){
-    *(sb->buf+i)="";
+  for(int i=pos;i<len;i++){
+    *(sb->buf+i)=*(sb->buf+i+len);
   }
+  *(sb->buf+len)='\0';
 }
-int main(){
+// 将文件描述符为 fd 的所有文件内容追加到 sb 中。sb 增长 hint ? hint : 8192 大小。
+ssize_t strbuf_read(struct strbuf *sb, int fd, size_t hint);
+
+// 将文件句柄为 fp 的一行内容（抛弃换行符）读取到 sb。
+int strbuf_getline(struct strbuf *sb, FILE *fp);
+int main() {
   struct strbuf sb;
+  strbuf_init(&sb, 10);
+  strbuf_attach(&sb, "xiyou", 5, 10);
+  assert(strcmp(sb.buf, "xiyou") == 0);
+  strbuf_addstr(&sb, "linux");
+  assert(strcmp(sb.buf, "xiyoulinux") == 0);
+  strbuf_release(&sb);
   return 0;
 }

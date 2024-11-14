@@ -524,27 +524,25 @@
 // }
 
 // int main(){
-//     char ch=' ';
-//     int aln[1000],i=0;
-//     for(int z=0;z<1000;z++){
-//         aln[z]=0;
-//     }
-//     while(ch!='.'){
-//         scanf("%c",&ch);
-//     if(ch!=' '){
-//         aln[i]++;
-//     }
-//     if(ch==' '){
-//         i++;
-//     }
-//     }
-//     for(int j=0;j<i;j++){
-//         printf("%d",aln[j]);
-//         if(j!=i-1){
-//             printf(" ");
+//     char ch[100];
+//     int h=0,aln[1000],k=0,cnt=0;
+    
+//     for(int i=0; ;i++){
+//        scanf("%c",&ch[i]);
+//        if(ch[i]!=' '&&ch[i]!='.'){
+//         cnt++;
+//        }else if(cnt!=0&&ch[i]==' '||ch[i]=='.'){
+//         if(k==0&&cnt!=0){
+//             printf("%d",cnt);
+//             k++;
+//         }else if(cnt!=0){ 
+//         printf(" %d",cnt);
+//         k++;
 //         }
+//         cnt=0;
+//        }
+//        if(ch[i]=='.') break;  
 //     }
-
 //     return 0;
 // }
 
@@ -574,11 +572,15 @@
 // int main(){
 //     int n,cnt=0;
 //     scanf("%d",&n);
+//     if(n<0){
+//     printf("0");
+//     }else{
 //     while(n>0){
 //         n/=2;
 //         cnt++;
 //     }
 //     printf("%d",32-cnt);
+//     }
 //     return 0;
 // }
 
@@ -601,14 +603,172 @@
 //     return 0;
 // }
 
+
+// int main(){
+//     int a,b;
+//     int aln[100][100];
+//     scanf("%d",&a);
+//     scanf("%d",&b);
+//     for(int i=1;i<=a;i++){
+//         for(int j=1;j<=b;j++){
+//            printf("(%d,%d) ",i,j);
+//         }
+//         printf("\n");
+//     }
+//     return 0;
+// }
+
+
+// int main(){
+//     int n,aln1,aln2,i=0;
+//     scanf("%d",&n);
+//     char name[4];
+//     char *aln;
+//     for(int i=0;i<n;i++){
+//      scanf("%s %d %d",name,&aln1,&aln2);
+//      if(aln1<15||aln1>20||aln2<50||aln2>70){
+//               *(aln+i)=name;
+//               i++;
+//            }
+//         }
+//       for(int j=0;j<=i;j++){
+//         if(j==0){
+//           printf("%s",*(aln+j));
+//         }else{
+//          printf("\n%s",*(aln+j)); 
+//         }
+//       }
+//     return 0;
+// }
+
+// int main() {
+//     int n;
+//     scanf("%d",&n);
+//     char name[4];
+//     int a,b;
+//     char names[n][4];
+//     int count = 0;
+//     for (int i = 0; i < n; i++) {
+//         scanf("%s %d %d", name, &a, &b);
+//         if (a < 15 || a > 20 || b < 50 || b > 70) {
+//             snprintf(names[count], sizeof(names[count]), "%s", name);
+//             count++;  
+//         }
+//     }
+//     for (int i = 0; i < count; i++) {
+//         printf("%s\n", names[i]);
+//     }
+    
+//     return 0;
+// }
+
+// int main(){
+//     double da,s,xiao;
+//     scanf("%lf %lf %lf",&da,&s,&xiao);
+//     double x;
+//     if(s==0){
+//         x=da*2.455;
+//     }else{
+//         x=da*1.26;
+//     }
+//     if(x>xiao){
+//         printf("%.2f T_T",x);
+//     }else{
+//         printf("%.2f ^_^",x);
+//     }
+//     return 0;
+// }
+
+// int main(){
+//     int n;
+//     scanf("%d",&n);
+//     char aln[80][80],ch='A';
+//     for(int i=0;i<2*n-1;i++){
+//         if(i==0||i==2*n-2){
+//             for(int j=0;j<2*n-1;j++){
+//                 aln[i][j]=ch;
+//             }
+//         }
+//         ch++;
+//     }
+//     return 0;
+// }
+
+
+// int main(){
+//     char *s;
+//     s=(char*)malloc(100*sizeof(char));
+//     s="123\0132";
+//     strncpy(s,"#",1);
+//     printf("%s",s);
+//     for(int i=0;*(s+i)!="#";i++){
+//       if(*(s+i)=="\0"){
+//         *(s+i)="A";
+//       }
+//     }
+//     int len=strlen(s);
+//     printf("%d",len);
+//     return 0;
+// }
+
+// int main()
+// {
+//    FILE *fp = NULL;
+ 
+//    fp = fopen("/tmp/test.txt", "w+");
+//    fprintf(fp, "This is testing for fprintf...\n");
+//    fputs("This is testing for fputs...\n", fp);
+//    fclose(fp);
+// }
+
+// int s(int a){
+//    int isprime=1;
+//    if(a==1||a==2){
+//       isprime=0;
+//    }
+//    for(int i=2;i<=sqrt(a);i++){
+//       if(a%i==0){
+//          isprime=1;
+//          break;
+//       }else isprime=0;
+//    }
+//    return isprime;
+// }
+// int main(){
+//    int n;
+//    scanf("%d",&n);
+//    if(s(n)==0){
+//       printf("是素数");
+//    }else{
+//       printf("不是素数");
+//    }
+//    return 0;
+// }
+
 int main(){
-    char *s;
-    scanf("%s",s);
-    int len=strlen(s);
-    for(int i=2;i<len;i++){
-        *(s+i)=*(s+i+1);
-    }
-    *(s+len)='\0';
-    printf("%s",s);
-    return 0;
+   int n;
+   char ch='A';
+   scanf("%d",&n);
+   int x=2*n-1;  //x=5
+   char aln[100][100];
+   for(int i=0;i<n;i++){
+      for(int j=0;j<x-i;j++){
+         aln[i][j]=ch;
+      }
+      for(int z=i+1;z<x-i-1;z++){
+         aln[z][i+1]=ch;
+         aln[z][x-1-i]=ch;
+      }
+      for(int h=i;h<x-i;h++){
+         aln[x-1-i][h]=ch;
+      }
+      ch++;
+   }
+   for(int k=0;k<n*2-1;k++){
+      for(int k1=0;k1<n*2-1;k1++){
+         printf("%c",aln[k][k1]);
+      }
+      printf("\n");
+   }
+   return 0;
 }
