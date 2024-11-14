@@ -745,30 +745,32 @@
 //    return 0;
 // }
 
-int main(){
-   int n;
-   char ch='A';
-   scanf("%d",&n);
-   int x=2*n-1;  //x=5
-   char aln[100][100];
-   for(int i=0;i<n;i++){
-      for(int j=0;j<x-i;j++){
-         aln[i][j]=ch;
-      }
-      for(int z=i+1;z<x-i-1;z++){
-         aln[z][i+1]=ch;
-         aln[z][x-1-i]=ch;
-      }
-      for(int h=i;h<x-i;h++){
-         aln[x-1-i][h]=ch;
-      }
-      ch++;
-   }
-   for(int k=0;k<n*2-1;k++){
-      for(int k1=0;k1<n*2-1;k1++){
-         printf("%c",aln[k][k1]);
-      }
-      printf("\n");
-   }
-   return 0;
-}
+// int main(){
+//    int n;
+//    char ch='A';
+//    scanf("%d",&n);
+//    int x=2*n-1;  //x=5
+//    char aln[100][100];
+//    for(int i=0;i<n;i++){
+//       for(int j=i;j<x-i;j++){
+//          aln[i][j]=ch;
+//       }
+//       for(int z=i+1;z<x-i-1;z++){                      
+//          aln[z][i]=ch;
+//          aln[z][x-1-i]=ch;
+//       }
+//       for(int h=i;h<x-i;h++){
+//          aln[x-1-i][h]=ch;
+//       }
+//       ch++;
+//    }
+//    for(int k=0;k<n*2-1;k++){
+//       for(int k1=0;k1<n*2-1;k1++){
+//          printf("%c",aln[k][k1]);
+//       }
+//       printf("\n");
+//    }
+//    return 0;
+// }
+
+
