@@ -116,12 +116,14 @@ void strbuf_remove(struct strbuf *sb, size_t pos, size_t len){
 }
 // 将文件描述符为 fd 的所有文件内容追加到 sb 中。sb 增长 hint ? hint : 8192 大小。
 ssize_t strbuf_read(struct strbuf *sb, int fd, size_t hint){
+       char ch;
        hint=(sb, hint ? hint : 8192);
        sb->buf=(char*)realloc(sb->buf,sb->alloc+sizeof(char)*hint);
-       FILE*fd=fdopen(fd,"r");
-       fgets(sb->buf,hint,fd);
-       if(fgets(sb->buf,hint,fd)!=NULL) return 1;
-       else return -1;
+       FILE *fp=fdopen(fd,"r");
+       while((ch=fgetc(fp)!=EOF)){  
+            strbuf_addch(sb,ch);
+       }
+       return (ch=fgetc(fp));
 }
 // 将文件句柄为 fp 的一行内容（抛弃换行符）读取到 sb。
 int strbuf_getline(struct strbuf *sb, FILE *fp){
@@ -144,11 +146,19 @@ int strbuf_getline(struct strbuf *sb, FILE *fp){
 */
 struct strbuf** strbuf_split_buf(const char* str, size_t len, int terminator, int max){
   struct strbuf **a=(struct strbuf **)malloc(sizeof(struct strbuf*)*(max+1));
+  int end=1,begin=0;
+  char*ap;
+  ap=(char*)malloc(sizeof(char)*len);
   for(int i=0;i<len;i++){
     if(str[i]==(char)terminator){
-      strbuf_add((*a),str[i],i);
+      end=i-1;
+      strbuf_add(a[i],str+begin,end-begin);
+      begin=i+1;
     }
+    a[i]=NULL;
   }
+  free(ap);
+  free(*a);
   return a;
 }
 bool strbuf_begin_judge(char* target_str, const char* str, int strlen){

@@ -774,3 +774,11 @@
 // }
 
 
+int main(){
+    char *s="love",*str="you forvevr";
+    char*ch;
+    ch=strncpy(ch,str,3);
+    printf("%s ",s);
+    printf("%s",ch);
+    return 0;
+}
