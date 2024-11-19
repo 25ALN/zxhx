@@ -773,12 +773,137 @@
 //    return 0;
 // }
 
+// int main(){
+//     int n,aln[10],max,cnt=11;
+//     scanf("%d",&n);
+//     for(int i=0;i<n;i++){
+//         scanf("%d",&aln[i]);
+//     }
+//     max=aln[0];
+//     for(int j=0;j<n;j++){
+//        if(max<aln[j]){
+//         max=aln[j];
+//         cnt=j;
+//        }
+//     }
+//     if(max==aln[0]) printf("%d 0",max);
+//     else printf("%d %d",max,cnt);
+//     return 0;
+// }
 
-int main(){
-    char *s="love",*str="you forvevr";
-    char*ch;
-    ch=strncpy(ch,str,3);
-    printf("%s ",s);
-    printf("%s",ch);
-    return 0;
-}
+// int main(){
+//     int n,aln[100],key;
+//     scanf("%d",&n);
+//     for(int i=0;i<n;i++){
+//         scanf("%d",&aln[i]);
+//     }
+//     scanf("%d",&aln[n]);
+//     int len=n+1;
+//     for(int j=0;j<len;j++){
+//         for(int h=j;h<len-j-1;h++){
+//         if(aln[h]>aln[h+1]){
+//             int t=aln[h];
+//             aln[h]=aln[h+1];
+//             aln[h+1]=t;
+//         }
+//         }
+//     }
+//     for(int z=0;z<len;z++){
+//         printf("%d ",aln[z]);
+//     }
+//     return 0;
+// }
+
+// void swap(int *a,int *b){
+//     int temp=*a;
+//     *a=*b;
+//     *b=temp;
+// }
+// int main(){
+//     int n,aln[100],min,max,a=0,b=0;
+//     scanf("%d",&n);
+//     for(int i=0;i<n;i++){
+//        scanf("%d",&aln[i]);
+//     }
+//     min=aln[0],max=aln[0];
+//     for(int j=0;j<n;j++){
+//        if(min>aln[j]) {
+//         min=aln[j];
+//         a=j;
+//        }
+//        if(max<aln[j]){
+//         max=aln[j];
+//         b=j;
+//        } 
+//     }
+//     printf("min=%d max=%d\n",min,max);
+//     printf("a=%d b=%d\n",a,b);
+//     if(n==2){
+//     swap(&aln[n-1],&aln[b]);
+//     }else{
+//     swap(&aln[0],&aln[a]);
+//     max=aln[0];
+//     for(int j=0;j<n;j++){
+//        if(max<aln[j]){
+//         max=aln[j];
+//         b=j;
+//        } 
+//     }
+//     swap(&aln[n-1],&aln[b]);
+//     }
+//     for(int z=0;z<n;z++){
+//         printf("%d ",aln[z]);
+//     }
+//     return 0;
+// }
+
+// int main(){
+//     int n,aln[100],a[100]={0},cnt=0;
+//     scanf("%d",&n);
+//     for(int i=0;i<n;i++){
+//         scanf("%d",&aln[i]);
+//         a[aln[i]]=1;
+//     }
+//     for(int z=0;z<n;z++){
+//         if(a[aln[z]]==1&&cnt!=0){
+//             printf(" %d",aln[z]);
+//             a[aln[z]]-=1;
+//             cnt++;
+//         }
+//         if(a[aln[z]]==1&&cnt==0){
+//             printf("%d",aln[z]);
+//             a[aln[z]]-=1;
+//             cnt++;
+//         }
+//     }
+//     return 0;
+// }
+
+// int main(){
+//     int n,aln1[100],aln2[100],cnt2=0,a=0,cnt[100]={0};
+//     for(int i=0;scanf("%d",&aln1[i])!=EOF;i++){
+//         //scanf("%d",&aln1[i]);
+//         cnt[aln1[i]]++;
+//         cnt2++;
+//     }
+//     for(int j=0;j<cnt2;j++){
+//         scanf("%d",&aln2[j]);
+//         cnt[aln2[j]]++;
+//     }
+//     for(int j=0;j<n;j++){
+//        if(cnt[aln1[j]]==1&&a==0){
+//         printf("%d",aln1[j]);
+//         a++;
+//        }else{
+//         printf(" %d",aln1[j]);
+//         a++;
+//        } 
+//     }
+//     for(int j=0;j<n;j++){
+//        if(cnt[aln2[j]]==1){
+//         printf(" %d",aln2[j]);
+//        }
+//     }
+//     return 0;
+// }
+
