@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
+#include <stdbool.h>
 
 // typedef int (*Predicate)(int);
 // int *filter(int *array, int length, Predicate predicate,
@@ -800,7 +801,7 @@
 //     scanf("%d",&aln[n]);
 //     int len=n+1;
 //     for(int j=0;j<len;j++){
-//         for(int h=j;h<len-j-1;h++){
+//         for(int h=0;h<len-j-1;h++){
 //         if(aln[h]>aln[h+1]){
 //             int t=aln[h];
 //             aln[h]=aln[h+1];
@@ -881,8 +882,9 @@
 
 
 //pta5
+
 // int main(){
-//     int aln1[20]={0},aln2[20]={0},a=0,cnt=0;
+//     int aln1[20]={0},aln2[20]={0},c[20]={0},a=0,cnt=0;
 //     scanf("%d",&aln1[0]);
 //     for(int i=1;i<=aln1[0];i++){
 //       scanf("%d",&aln1[i]);
@@ -891,34 +893,53 @@
 //     for(int j=1;j<=aln2[0];j++){
 //       scanf("%d",&aln2[j]);
 //     }
-
-//     for(int z=1;z<=aln1[0];z++){
-//       for(int h=1;h<=aln2[0];h++){
-//          if(aln1[z]==aln2[h]){
-//             cnt=1;
-//             break;
-//          }
-//       }
-//       if(cnt==0&&a==0){
-//             a++;
-//             printf("%d",aln1[z]);
-//          }else if(cnt==0&&a!=0){
-//             printf(" %d",aln1[z]);
-//          }
-//          cnt=0;    
+//     for(int k=1;k<=aln1[0];k++){
+//         for(int o=1;o<=aln2[0];o++){
+//             if(aln1[k]==aln2[o]){
+//                 a=1;
+//                 break;
+//             }
+//         }
+//         if(a==0) {
+//             c[cnt]=aln1[k];
+//             cnt++;
+//         }
+//         a=0;
 //     }
+//     a=0;
 
-//     for(int z1=1;z1<=aln2[0];z1++){
-//       for(int h1=1;h1<=aln1[0];h1++){
-//          if(aln2[z1]==aln1[h1]){
-//             cnt=1;
-//             break;
-//          }
-//       }
-//       if(cnt==0){
-//        printf(" %d",aln2[z1]);
-//       }       
-//       cnt=0;
+//     for(int k=1;k<=aln2[0];k++){
+//         for(int o=1;o<=aln1[0];o++){
+//             if(aln2[k]==aln1[o]){
+//                 a=1;
+//                 break;
+//             }
+//         }
+//         if(a==0) {
+//             c[cnt]=aln2[k];
+//             cnt++;
+//         }
+//         a=0;
+//     }
+//         for(int y=0;y<cnt;y++){
+//         printf("%d ",c[y]);
+//     }
+//     printf("\n");
+//     int pi=0,pp=0;
+//     for(int p=0;p<cnt;p++){
+//         for(int p1=p;p1<cnt;p1++){
+//            if(c[p]==c[p1]&&p!=p1){
+//              pi=1;
+//              break;
+//            }
+//         }
+//         if(pi==0&&pp==0){
+//         printf("%d",c[p]);
+//         pp++;
+//         }else if(pi==0){
+//             printf(" %d",c[p]);
+//         }
+//         pi=0;
 //     }
 //     return 0;
 // }
@@ -938,19 +959,30 @@
 // }
 
 // int main(){
-//    int aln1[1000],aln2[1000]={0},x,i=0,max=0;
+//    int aln1[1000],aln2[1000]={1},x,i=0,max=0,len=0;
 //    scanf("%d",&aln1[0]);
 //    for(int i=1;i<=aln1[0];i++){
 //       scanf("%d",&aln1[i]);
-//       aln2[aln1[i]]++;
 //    }
-//    for(int j=1;j<1000;j++){
-//        if(max<aln2[j]){
-//          max=aln2[j];
-//          x=j;
-//        }
+//    if(aln1[0]==1){
+//     printf("%d %d",aln1[1],1);
+//    }else{
+//    len=aln1[0];
+//    for(int j=1;j<=len;j++){
+//       for(int z=1;z<=len;z++){
+//         if(aln1[j]==aln1[z]&&j!=z){
+//             aln2[j]++;
+//         }
+//       }
 //    }
-//    printf("%d %d",x,max);
+//    for(int k=1;k<=len;k++){
+//     if(max<aln2[k]){
+//         max=aln2[k];
+//         x=k;
+//     }
+//    }
+//    printf("%d %d",aln1[x],max+1);
+//    }
 //    return 0;
 // }
 
@@ -1014,3 +1046,158 @@
 //    return 0;
 // }
 
+// //二阶 fun1 
+// int fun1(int arr[2][2],int i,int m,int n)
+// {
+//     int res2;
+//     //i=0,n=1,m=0
+//     res2=arr[i][m]*arr[i+1][n]-arr[i][n]*arr[i+1][m];
+//     return res2;
+//  } 
+ 
+// //从三阶行列式中框选出二阶行列式 
+// int (*cut(int arr2[3][3], int x, int y,int arr3[2][2]))[2] //x表示需要删除的行数，y表示需要删除的列数 
+//  {
+//      static int static_arr3[2][2];
+     
+//      int a=0;
+//      int b=0;
+//      int i,j;
+     
+
+//      for(i=0;i<3;i++){
+//          if(i==x){
+//              continue;
+//         }
+//         for(j=0;j<3;j++){
+//              if(j==y){
+//                 continue;
+//              }
+//         arr3[a][b]=arr2[i][j];
+//         b++;
+//         }
+//     a++;
+//     b=0; //处理完一行后，将索引重置为0 
+//     if(a==2){
+//         break;
+//     } 
+//     }
+//     int (*arr4)[2]=static_arr3;
+//     return arr4;
+//  }
+
+//  //三阶 fun2
+// int fun2(int arr1[3][3])
+//  {    int arrA[2][2],arrB[2][2],arrC[2][2];
+//      cut(arr1,0,0,arrA); //分别表示出对应的二阶行列式 //  a00 a01 a02 
+//     cut(arr1,0,1,arrB);                                   //  a10 a11 a12
+//     cut(arr1,0,2,arrC);                                 //  a20 a21 a22
+//      int n[3];
+//      n[0]=fun1(arrA,1,1,2);        //j=0:m=1,n=2
+//     n[1]=fun1(arrB,1,0,2);        //j=1:m=0,n=2
+//     n[2]=fun1(arrC,1,0,1);        //j=2:m=0,n=1
+    
+    
+//     int res3=0;
+//     int j;
+//      for(j=0;j<3;j++){
+//          res3+=(int)pow(-1, j)*n[j]*arr1[0][j];
+//      }
+//     return res3;
+     
+//    }
+
+// int reverse(int x) {
+//     long long aln[32],len=0,num=0;
+//      if(x==0||x>pow(2,31)-1||x<-pow(2,31)){
+//         num=0;
+//         return num;
+//     }else if(x>0&&x<=pow(2,31)-1){
+//         while(x>0){
+//             aln[len]=x%10;
+//             x/=10;
+//             len++;
+//         }
+//     }else if(x<0&&x>=-pow(2,31)){
+//         int f=-x;
+//         while(f>0){
+//             aln[len]=f%10;
+//             f/=10;
+//             len++;
+//         }
+//         for(int i=0;i<=len;i++){
+//             aln[i]-=2*aln[i];
+//         }
+//     }
+//     int k=0;
+//     while(k<len){
+//     num+=aln[k]*pow(10,len-k-1);
+//     k++;
+//     }
+//     if(num==0||num>pow(2,31)-1||num<-pow(2,31)){
+//         num=0;
+//         return num;
+//     }
+//     return num;
+// }
+
+// int main(){
+//     printf("%d",reverse(1534236469));
+//     return 0;
+// }
+
+// int myAtoi(char* s) {
+//     int len=strlen(s),aln[200],cnt=0;
+//     for(int i=0;i<len-1;i++){
+//         if(i==0&&s[i]>=48&&s[i]<=57&&s[i+1]>=48&&s[i+1]<=57){
+//             aln[cnt]=(int)s[i]-48;
+//             cnt++;
+//         }else{
+//             if(s[i]>=48&&s[i]<=57&&s[i+1]>=48&&s[i+1]<=57){
+//                 aln[cnt]=(int)s[i]-48;
+//                 cnt++;
+//             }
+//         }
+//     }
+//     int llg=0;
+//     if(cnt==len){
+//     aln[cnt]=(int)s[len]-48;
+//     llg=cnt+1;
+//     }
+//     else {
+//         llg=cnt;
+//     }
+//     int k=0;
+//     int num=0;
+//     whlie(k<llg){
+//     num+=aln[k]*pow(10,llg-k);
+//     k++;
+//     }
+//     return num;
+// }
+
+// int main(){
+// int n=2;
+// char s[2]={'a','b'};
+// int stk[n + 1], top = 0;
+//     for (int i = 0; i < n; i++) {
+//         char ch ='a';
+//         if (ch) {
+//             if (top == 0 || stk[top - 1] != ch) {
+//                 return 123;
+//             }
+//             top--;
+//         } else {
+//             stk[top++] = s[i];
+//         }
+//     }
+//     return 123;
+// }
+
+
+int main(){
+    int x=123,cnt=0;;
+    char s[11];
+    sprintf(s,"%d",x);
+    printf("%c",s[1]);
+}
