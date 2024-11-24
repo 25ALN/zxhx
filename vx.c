@@ -1194,10 +1194,20 @@
 //     return 123;
 // }
 
-
 int main(){
-    int x=123,cnt=0;;
-    char s[11];
-    sprintf(s,"%d",x);
-    printf("%c",s[1]);
+    int nums[]={2,3,8,1,5,6,7,9,4},numsSize=9;
+    for(int i=0;i<8;i++){
+        for(int j=0;i<8-i;j++){
+            if(nums[j]>nums[j+1]){
+                int temp=nums[j+1];
+                nums[j+1]=nums[j];
+                nums[j]=temp;
+            }
+        }
+    }
+    for(int i=0;i<9;i++){
+        printf("%d ",nums[i]);
+    }
+    return 0;
 }
+
